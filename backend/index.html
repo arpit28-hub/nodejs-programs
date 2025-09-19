@@ -7,10 +7,24 @@
   </head>
   <body>
     <div>
+      <div>
+        <h1>Welcome to the airbnb</h1>
+        <a href="#">go to the rgister user</a>
+      </div>
       <form action="/add-user" method="POST">
-          <h3>this is featture branch</h3>
-          <h4>this is main brnach project</h4>
-          <h4>this is the text written inside the feature branch</h4>
+        <h3>this is featture branch</h3>
+        <h4>this is main brnach project</h4>
+        <h4>this is the text written inside the feature branch</h4>
+      </form>
+      <form action="/add-user" method="post">
+        <label for="userId">Enter the UserId:</label>
+        <input type="text" id="userId" nam="userId" />
+        <label for="userName">Enter the Name:</label>
+        <input type="text" id="userName" name="userName" />
+        <input type="submit">
+        <div>
+          const username = req.body.userName;
+        </div>
       </form>
     </div>
   </body>
