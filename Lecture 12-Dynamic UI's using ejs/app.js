@@ -4,12 +4,12 @@ const app = express();
 const path = require("path");
 
 //external module
-const homeRoute = require('./routes/homeHost')
-const blogRoute = require('./routes/blogHost')
+const homeRoute = require('./routes/homeHost');
+const blogRoute = require('./routes/blogHost');
 const rootdir = require("./utils/pathUtils");
 // setting up the view engine to the ejs
 app.set("view engine", "ejs");
-// set the folders where ejs file will live
+// set the folders where ejs file will live(optional)
 app.set("views", path.join(rootdir, "views"));
 app.use(homeRoute)
 app.use(blogRoute)
