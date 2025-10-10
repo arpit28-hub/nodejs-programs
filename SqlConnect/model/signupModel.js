@@ -1,5 +1,5 @@
 const client = require("../db");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); //used to hash the password(one-way)
 
 // save the user signup information
 async function signUpUser(email, password) {
