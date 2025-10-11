@@ -1,19 +1,16 @@
 const { signUpUser } = require("../model/signupModel");
-
+const catchAsync = require("../utils/catchAsync");
 module.exports = {
-  regUser: async (req, res) => {
+  regUser: catchAsync(async (req, res,next) => {
     const { email, password } = req.body;
-    try {
-      const result = await signUpUser(email, password);
-      if (result.error) {
-        return res.status(400).json({ error: result.error });
-      }
-      res
-        .status(201)
-        .json({ message: "User Registered Successfully", user: result.user });
-    } catch (err) {
-      res.status(500).json({ error: "Internal server error" });
-      console.error(err.message);
+    const result = await signUpUser(email, password);
+    if (result.error) {
+      const err = new Error(result.error);
+      err.statusCode = 400;
+      return next(err);
     }
-  },
+    res
+      .status(201)
+      .json({ message: "User Registered Successfully", user: result.user });
+  }),
 };
