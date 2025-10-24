@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt"); //used to hash the password(one-way)
 async function signUpUser(email, password) {
   //STEP-1:- Check if the  User already exist
   const existingUser = await client.query(
-    `SELECT * FROM  userauth WHERE email= $1`,
+    `SELECT * FROM  users WHERE email= $1`,
     [email]
   );
   if (existingUser.rows.length > 0) {
@@ -17,7 +17,7 @@ async function signUpUser(email, password) {
 
   // STEP-3:- Save to DB
   const result = await client.query(
-    "INSERT INTO userauth(email,password) VALUES ($1,$2) RETURNING *",
+    "INSERT INTO users(email,password) VALUES ($1,$2) RETURNING *",
     [email, hashedPassword]
   );
   return { user: result.rows[0] };

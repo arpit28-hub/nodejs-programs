@@ -1,5 +1,5 @@
 require("dotenv").config();
-// const globalErrorHandler = require("./middleware/globalErrorHandler");
+const globalErrorHandler = require("./middleware/globalErrorHandler");
 // Core Modules
 const express = require("express");
 const bcrypt = require("bcrypt");
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(routes);
 
 // Global error handler
-// app.use(globalErrorHandler);
+app.use(globalErrorHandler);
 app.listen(PORT, () => {
   console.log(`server is running at http://localhost:${PORT}`);
 });

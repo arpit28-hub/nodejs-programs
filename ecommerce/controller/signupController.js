@@ -1,7 +1,7 @@
 const { signUpUser } = require("../models/signupModel");
 const catchAsync = require("../utils/catchAsync");
 module.exports = {
-  regUser: catchAsync(async (req, res,next) => {
+  regUser: catchAsync(async (req, res, next) => {
     const { email, password } = req.body;
     const result = await signUpUser(email, password);
     if (result.error) {

@@ -10,5 +10,4 @@ const loginRoute = require("./loginRoute")
 router.use("/users", userRoute);
 router.use("/signup", signupRoute);
 router.use("/login",loginRoute)
-
 module.exports = router;
