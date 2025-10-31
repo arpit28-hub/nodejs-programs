@@ -1,11 +1,18 @@
 require("dotenv").config();
+
 const globalErrorHandler = require("./middleware/globalErrorHandler");
 // Core Modules
 const express = require("express");
 const bcrypt = require("bcrypt");
+const cors = require("cors")
 const PORT = process.env.PORT;
 
 const app = express();
+app.use(cors({
+  origin: "http://localhost:5173", // your Vue app’s URL
+  methods: ["GET", "POST", "PUT", "DELETE"], // allowed HTTP methods
+  credentials: true // allow cookies or tokens if needed
+}))
 // Exterbal Modules
 // ROUTES
 const routes = require("./routes/index");
