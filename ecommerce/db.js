@@ -11,7 +11,6 @@ const client = new Client({
   port: process.env.DB_PORT, // default PostgreSQL port
 });
 
-// ✅ Connect to the database
 client
   .connect()
   .then(() => console.log("✅ Connected to PostgreSQL"))

@@ -2,10 +2,30 @@ require("dotenv").config();
 const globalErrorHandler = require("./middleware/globalErrorHandler");
 // Core Modules
 const express = require("express");
+const multer = require("multer");
 const bcrypt = require("bcrypt");
 const PORT = process.env.PORT;
 
 const app = express();
+
+// Configure custom file storage
+const storage = multer.diskStorage({
+  destination: "uploads/", // folder to save files
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 }, // 1MB file size limit
+});
+//  Upload route
+app.post("/upload", upload.single("image"), (req, res) => {
+  console.log(req.file);
+  res.send("File uploaded successfully!");
+});
+
 // Exterbal Modules
 // ROUTES
 const routes = require("./routes/index");
